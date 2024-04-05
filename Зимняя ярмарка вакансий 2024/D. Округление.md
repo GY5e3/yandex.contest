@@ -36,32 +36,33 @@
  </tr>
  <tr>
     <td>
-    <br>3 2</br>
-    <br>1 1 1</br>
+    	<br>3 2</br>
+	<br>1 1 1</br>
     </td>
-    <td>0 1 1</td>
+    	<td>0 1 1</td>
  </tr>
-  <tr>
-<td>
-    <br>5 1</br>
-<br>6 2 3 4 5</br>
-  </td>
-  <td>1 0 0 0 0</td>
+<tr>
+	<td>
+    		<br>5 1</br>
+		<br>6 2 3 4 5</br>
+  	</td>
+  	<td>1 0 0 0 0</td>
   </tr>
-  <tr>
+  
+<tr>
     <td>
-      <br>3 40</br>
-<br>100 12 23</br>
+      	<br>3 40</br>
+	<br>100 12 23</br>
     </td>
     <td>
       30 3 7
     </td>
-  </tr>
+</tr>
 	
-    <tr>
-    <td>
-      <br>6 21</br>
-<br>1 2 3 4 5 6</br>
+ <tr>
+		<td>
+		<br>6 21</br>
+	<br>1 2 3 4 5 6</br>
     </td>
     <td>
       1 2 3 4 5 6
