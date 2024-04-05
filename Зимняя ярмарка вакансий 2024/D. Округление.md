@@ -18,12 +18,12 @@
 
 Заданы натуральные числа a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub> и x. Последовательность b<sub>i</sub> определяется по следующей формуле: $$b_i= \fraq{x⋅a_i}{a_1+a_2+…+a_n}$$.
 
-Нужно найти последовательность целых чисел c<sub>i такую, что $$\sum_{i=1}^{n} abs(c_i - b_i)$$ минимальна и $$\sum_{i=1}^{n} c_i = x$$ . 
+Нужно найти последовательность целых чисел c<sub>i</sub> такую, что $$\sum_{i=1}^{n} abs(c_i - b_i)$$ минимальна и $$\sum_{i=1}^{n} c_i = x$$ . 
 
 
 **Формат ввода**  
 В первой строке записаны два целых числа n и x (1 ≤ n ≤ 1000000, 1 ≤ x ≤ 1000000).  
-Во второй строке записаны n целых чисел a1, a2, …, an (1 ≤ a<sub>i</sub> ≤ 1000000).
+Во второй строке записаны n целых чисел a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub> (1 ≤ a<sub>i</sub> ≤ 1000000).
 
 **Формат вывода** 
 Выведите n целых чисел c<sub>1</sub>, c<sub>2</sub>, …, c<sub>n</sub> (0 ≤ c<sub>i</sub> ≤ x). Числа в сумме должны давать значение x.  
@@ -79,3 +79,46 @@
     </td>
 </tr>
 </table>  
+
+```c++
+#include <algorithm>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_set>
+
+using namespace std;
+
+int main(int argc, char const *argv[])
+{
+    int n, x; cin >> n >> x;
+    vector<int> a(n);
+    long long aSum = 0;
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+        aSum += a[i];
+    } 
+    vector<long double> b(n);
+    vector<long long> bR(n);
+    long long brSum = 0;
+    for(int i = 0; i < n; i++) {
+        b[i] = (long double) x * a[i] / aSum;
+        bR[i] = (long long) b[i];
+        brSum += bR[i];
+    }
+    long long diff = x - brSum;
+    vector<pair<long double, int>> fractionalParts;
+    for (size_t index = 0; index < b.size(); index++) {
+        fractionalParts.emplace_back(b[index] - (long double)bR[index], index);
+    }
+    sort(fractionalParts.begin(), fractionalParts.end(), greater<>());
+
+    for (int i = 0; i < diff; i++) {
+        bR[fractionalParts[i].second]++;
+    }
+    for (int value : bR) {
+        cout << value << " ";
+    }
+    return 0;
+}
+```
